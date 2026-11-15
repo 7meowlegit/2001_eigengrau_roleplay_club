@@ -14,7 +14,13 @@
         }
         pre a {
         color: red;
-        text-align: left;}
+        text-align: left;
+        }
+        h1 {
+        color: red;
+        text-align: left;
+        jiggle 0.9s steps(2) infinite;
+        }
         pre a:hover { transition: all 32ms ease-out; animation: jiggle 0.9s steps(2) infinite;}
         @keyframes jiggle { 
         0% { transform: rotate(0.1deg) translate(-0.5px, -0.5px); letter-spacing: -1.2px; }
