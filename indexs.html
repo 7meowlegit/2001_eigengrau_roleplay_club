@@ -12,6 +12,13 @@
             font-size: 12px;
             color: #777;
         }
+        a {
+        color: red;
+        text-align: left;}
+        a:hover { transition: all 32ms ease-out; animation: jiggle 0.9s steps(2) infinite;}
+        @keyframes jiggle { 0% { transform: rotate(0deg) translate(-0.5px, -0.5px); letter-spacing: -1.2px; }
+        25% { transform: rotate(0.2deg) translate(0.4px, 0.2px); letter-spacing: -1.1px; } 50% { transform: rotate(-0.1deg) translate(0, 0); letter-spacing: -1.3px; }
+        75% { transform: rotate(0.2deg) translate(-1px, -0.5px); letter-spacing: -1.2px; } 100% { transform: rotate(0.3deg) translate(-0.1px, -0.5px); letter-spacing: -1.3px; } }
     </style>
 </head>
 <body>
@@ -22,6 +29,9 @@
 
 <pre>
 <a href="info.html">informations</a>
+
+
+    
 <a href="locations.html">locations</a>
 <a href="entities.html">entities</a>
 <a href="items.html">items</a>
