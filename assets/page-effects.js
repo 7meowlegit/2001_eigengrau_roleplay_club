@@ -1,4 +1,9 @@
 (function() {
+
+    document.querySelectorAll("img").forEach(img => {
+    img.style.imageRendering = "auto";
+    });
+    
     let navigating = false;
 
     const overlay = document.createElement("div");
