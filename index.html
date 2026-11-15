@@ -1,1 +1,43 @@
-<a href="indexs.html">go back</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>...</title>
+</head>
+<body>
+  <p>define entry break</p>
+  <form onsubmit="return submitCode(event);">
+    <input type="password" id="code" name="code" placeholder="input" aria-label="input" autocomplete="off" required autofocus>
+    <button type="submit" id="submitButton">submit</button>
+    <p id="message" aria-live="polite"></p>
+  </form>
+  <audio id="mouseclick" src="assets/mouseclick.ogg" preload="auto"></audio>
+  <audio id="incorrect" src="assets/incorrect.ogg" preload="auto"></audio>
+  <script>
+    function playSound(id) {
+      const sound = document.getElementById(id);
+      sound.currentTime = 0;
+      sound.play().catch(() => {});
+    }
+
+    function submitCode(event) {
+      event.preventDefault();
+      playSound('mouseclick');
+
+      if (document.getElementById('code').value !== 'INTERLOPER') {
+        playSound('incorrect');
+        document.getElementById('message').textContent = 'TO USER YOU DO NOT KNOW THE CODE INVAILD CODE PLEASE GO AWAY GO FUCK YOU';
+        return false;
+      }
+
+      document.getElementById('submitButton').disabled = true;
+      setTimeout(() => {
+        window.location.href = 'indexs.html';
+      }, 3000);
+      return false;
+    }
+  </script>
+  <script src="assets/page-effects.js"></script>
+</body>
+</html>
