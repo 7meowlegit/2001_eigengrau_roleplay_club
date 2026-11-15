@@ -1,0 +1,31 @@
+/* hello i created this so every button "Go back" will have the same styling everywhere (since i figured it will just be at the top anyway lol */
+/* in fact, we have to make the buttons pull thing somewhere in a separate file to optimize it and make it less clunky amirite */
+<style>
+        a {
+                text-decoration: none;
+                color: #F5FFFA;/* "man i hate mint chocolate chip" */
+                text-shadow: #000 2px 2px 1px;
+                padding: 7px;
+                display: inline-block;
+                width: 200px;
+                box-sizing: border-box;
+                outline: outset #590000 1px;
+                background-color: #000000;
+                margin-bottom: 6px;
+        }
+        a:hover {
+        color: #f00; 
+        text-shadow: #ff3636 0px 1px 6px;
+        animation: jiggle 0.9s steps(2) infinite;
+        }
+        @keyframes jiggle { 
+        0% { transform: rotate(0.1deg) translate(-0.5px, -0.5px); letter-spacing: -1px; }
+        25% { transform: rotate(0.2deg) translate(0.4px, 0.2px); letter-spacing: -1.1px; }
+        50% { transform: rotate(-0.1deg) translate(0, 0); letter-spacing: -1.3px; }
+        75% { transform: rotate(0.2deg) translate(-1px, -0.5px); letter-spacing: -1.2px; }
+        100% { transform: rotate(0.3deg) translate(-0.1px, -0.5px); letter-spacing: -1.3px; }
+        }
+</style>
+<nav>
+  <a href="indexs.html">go back</a>
+</nav>
