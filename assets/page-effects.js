@@ -42,8 +42,11 @@
             staticSound.play().catch(() => {});
         }
         else{
+            requestAnimationFrame(() => {
+            overlay.style.transition = "opacity 0.4s ease";
             overlay.style.opacity = "0";
-            staticSound.currentTime = 0;
+            overlay.style.pointerEvents = "none";
+          });
         }
     }
 
