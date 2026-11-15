@@ -1,4 +1,5 @@
-<style>
+document.write(`
+        <style>
         pre a {
                 text-decoration: none;
                 color: #F5FFFA;/* "man i hate mint chocolate chip" */
@@ -27,4 +28,4 @@
         
 <div id="navbar">
         <pre><a href="indexs.html">go back</a></pre>
-</div>
+</div>`);
