@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>2001</title>
+
+    <style>
+        #loading {
+            display: none;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<h1>2001wiki</h1>
+2001office official wiki
+<hr>
+
+<pre>
+<a href="info.html">about the void</a>
+<a href="locations.html">locations</a>
+<a href="entities.html">entities</a>
+<a href="items.html">items</a>
+
+<a href="credits.html">/..</a>
+</pre>
+
+<div id="loading">pending</div>
+
+<audio id="clicksound" src="assets/clicksound.ogg" preload="auto"></audio>
+
+<script>
+const click = document.getElementById("clicksound");
+const loading = document.getElementById("loading");
+
+let navigating = false;
+
+document.addEventListener("click", function(e) {
+    const link = e.target.closest("a");
+
+    if (!link || navigating) return;
+
+    e.preventDefault();
+    navigating = true;
+
+    loading.style.display = "block";
+
+    click.currentTime = 0;
+    click.play().catch(() => {});
+
+    setTimeout(function() {
+        window.location.href = link.href;
+    }, 1000);
+});
+</script>
+
+<script src="assets/page-effects.js"></script>
+
+</body>
+</html>
