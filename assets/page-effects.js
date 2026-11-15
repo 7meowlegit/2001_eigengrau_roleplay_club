@@ -35,10 +35,16 @@
         document.body.appendChild(overlay);
     });
 
-    function showStatic() {
-        overlay.style.opacity = "1";
-        staticSound.currentTime = 0;
-        staticSound.play().catch(() => {});
+    function showStatic(show) {
+        if(show){
+            overlay.style.opacity = "1";
+            staticSound.currentTime = 0;
+            staticSound.play().catch(() => {});
+        }
+        else{
+            overlay.style.opacity = "0";
+            staticSound.currentTime = 0;
+        }
     }
 
     document.addEventListener("click", function(e) {
@@ -53,13 +59,16 @@
         navigating = true;
         e.preventDefault();
 
-        showStatic();
+        showStatic(1);
 
         const click = new Audio("assets/clicksound.mp3");
         click.play().catch(() => {});
 
         setTimeout(function() {
             window.location.href = link.href;
+        }, 1000);
+        setTimeout(function() {
+            showStatic(0);
         }, 1000);
     });
 })();
