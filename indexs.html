@@ -79,10 +79,19 @@
 <div id="loading">pending</div>
 
 <audio id="clicksound" src="assets/clicksound.ogg" preload="auto"></audio>
+<audio id="hoversound" src="assets/mousehover.ogg" preload="auto"></audio>
 
 <script>
 const click = document.getElementById("clicksound");
 const loading = document.getElementById("loading");
+const hover = document.getElementById("hoversound");
+
+document.querySelectorAll("pre a").forEach(link => {
+    link.addEventListener("mouseenter", function() {
+        hover.currentTime = 0;
+        hover.play().catch(() => {});
+    });
+});
 
 let navigating = false;
 
@@ -104,7 +113,7 @@ document.addEventListener("click", function(e) {
     }, 1000);
 });
 </script>
-
+    
 <script src="assets/page-effects.js"></script>
 
 </body>
