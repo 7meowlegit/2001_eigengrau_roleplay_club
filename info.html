@@ -11,6 +11,12 @@
           height: auto;
           display: block;
         }
+        /* add -> class="no-antialias" <- to every img line (e.g. : "<img src="assets/images/2001banner.png" alt="banner" class="no-antialias">" */
+        img.no-antialias {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges; 
+            image-rendering: -webkit-optimize-contrast; 
+}
     </style>
 </head>
 <body>
@@ -25,7 +31,7 @@
 
     <section class="info-entry">
         <h2>about 2001office</h2>
-        <img src="assets/images/2001banner.png" alt="banner">
+        <img src="assets/images/2001banner.png" alt="banner" class="no-antialias">
         <p>
           [ awaiting rewrite ]
         </p>
@@ -43,7 +49,7 @@ attempts to establish a connection between the overworld and the void may also c
     </section>
         <section class="info-entry">
         <h2>voidhost</h2>
-        <img src="assets/images/voidhost.png" alt="voidhost image">
+        <img src="assets/images/voidhost.png" alt="voidhost image" class="no-antialias">
         <p>
           center/core of the void, acts as the main anchor. it was the first thing created by structor #2001, taking the physical shape of a damaged diamond roughly the size of jupiter. anything that gets too close to it would eventually be crushed or destroyed due to the unusual gravitational forces surrounding it. it is indestructible.
         </p>
@@ -52,7 +58,7 @@ attempts to establish a connection between the overworld and the void may also c
     </section>
         <section class="info-entry">
         <h2>structor #2001</h2>
-        <img src="assets/images/voidstructor.gif" alt="voidstructor image">
+        <img src="assets/images/voidstructor.gif" alt="voidstructor image" class="no-antialias">
         <p>
           it is a cursed object originally defined as a tool for creation on a dimensional scale. in order to activate and use it, the user must hold and grip it tightly. the object is considered indestructible due to the way it was materialized.
           the only known case of it ever being damaged was when it was used by someone powerful enough to do so. it was later locked after that one time use, making it completely unusable to anyone else from that point onward.
