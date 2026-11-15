@@ -1,43 +1,84 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <script src="assets/page-effects.js"></script>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>...</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>...</title>
 </head>
 <body>
-  <p>define entry break</p>
-  <form onsubmit="return submitCode(event);">
-    <input type="password" id="code" name="code" placeholder="input" aria-label="input" autocomplete="off" required autofocus>
-    <button type="submit" id="submitButton">submit</button>
-    <p id="message" aria-live="polite"></p>
-  </form>
-  <audio id="mouseclick" src="assets/mouseclick.ogg" preload="auto"></audio>
-  <audio id="incorrect" src="assets/incorrect.ogg" preload="auto"></audio>
-  <script>
-    function playSound(id) {
-      const sound = document.getElementById(id);
-      sound.currentTime = 0;
-      sound.play().catch(() => {});
-    }
+    <p>define entry break</p>
 
-    function submitCode(event) {
-      event.preventDefault();
-      playSound('mouseclick');
+    <form onsubmit="return submitCode(event);">
+        <input type="password" id="code" name="code" placeholder="input" aria-label="input" autocomplete="off" required autofocus>
+        <button type="submit" id="submitButton">submit</button>
+        <p id="message" aria-live="polite"></p>
+    </form>
 
-      if (document.getElementById('code').value !== 'INTERLOPER') {
-        playSound('incorrect');
-        document.getElementById('message').textContent = 'TO USER YOU DO NOT KNOW THE CODE INVAILD CODE PLEASE GO AWAY GO FUCK YOU';
-        return false;
-      }
+    <audio id="mouseclick" src="assets/mouseclick.ogg" preload="auto"></audio>
+    <audio id="incorrect" src="assets/incorrect.ogg" preload="auto"></audio>
+    <audio id="staticsound" src="assets/staticsound.ogg" preload="auto" loop></audio>
 
-      document.getElementById('submitButton').disabled = true;
-      setTimeout(() => {
-        window.location.href = 'indexs.html';
-      }, 3000);
-      return false;
-    }
-  </script>
+    <script>
+        let navigating = false;
+
+        const overlay = document.createElement("div");
+
+        Object.assign(overlay.style, {
+            position: "fixed",
+            inset: "0",
+            width: "100%",
+            height: "100%",
+            zIndex: "999999",
+            pointerEvents: "none",
+            opacity: "0",
+            backgroundImage: "url('assets/static.gif')",
+            backgroundSize: "100% 100%",
+            imageRendering: "pixelated",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            transition: "opacity 0.1s"
+        });
+
+        document.body.appendChild(overlay);
+
+        function playSound(id) {
+            const sound = document.getElementById(id);
+            sound.currentTime = 0;
+            sound.play().catch(() => {});
+        }
+
+        function showStatic() {
+            overlay.style.opacity = "1";
+            playSound("staticsound");
+        }
+
+        function submitCode(event) {
+            event.preventDefault();
+
+            if (navigating) return false;
+
+            playSound("mouseclick");
+
+            if (document.getElementById("code").value !== "INTERLOPER") {
+                playSound("incorrect");
+                document.getElementById("message").textContent =
+                    "TO USER YOU DO NOT KNOW THE CODE INVAILD CODE PLEASE GO AWAY GO FUCK YOU";
+                return false;
+            }
+
+            navigating = true;
+            document.getElementById("submitButton").disabled = true;
+            document.getElementById("code").disabled = true;
+
+            showStatic();
+
+            setTimeout(() => {
+                window.location.href = "indexs.html";
+            }, 3000);
+
+            return false;
+        }
+    </script>
 </body>
 </html>
