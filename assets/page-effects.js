@@ -1,7 +1,6 @@
 (function() {
-
     document.querySelectorAll("img").forEach(img => {
-    img.style.imageRendering = "auto";
+        img.style.imageRendering = "auto";
     });
     
     let navigating = false;
@@ -37,18 +36,22 @@
 
     function showStatic(show) {
         if(show){
+            overlay.style.transition = "opacity 0.1s";
             overlay.style.opacity = "1";
             staticSound.currentTime = 0;
             staticSound.play().catch(() => {});
         }
         else{
             requestAnimationFrame(() => {
-            overlay.style.transition = "opacity 0.4s ease";
-            overlay.style.opacity = "0";
-            overlay.style.pointerEvents = "none";
-          });
+                overlay.style.transition = "opacity 0.4s ease";
+                overlay.style.opacity = "0";
+                overlay.style.pointerEvents = "none";
+            });
         }
     }
+
+
+/* long story short, if page shows up then it makes the static opaque and dgaf if it is already opaque */
 
     document.addEventListener("click", function(e) {
         const link = e.target.closest("a");
@@ -70,8 +73,20 @@
         setTimeout(function() {
             window.location.href = link.href;
         }, 1000);
-        setTimeout(function() {
-            showStatic(0);
-        }, 1000);
+    });
+
+
+    window.addEventListener("pageshow", function(event) {
+        navigating = false;
+        if (event.persisted || performance.getEntriesByType("navigation")[0]?.type === "back_forward") {
+            overlay.style.transition = "none";
+            overlay.style.opacity = "1";
+            staticSound.currentTime = 0;
+            staticSound.play().catch(() => {});
+            setTimeout(() => {
+                showStatic(0);
+            }, 200);
+
+        }
     });
 })();
