@@ -66,6 +66,8 @@
                 staticSound.currentTime = 0;
             }
             requestAnimationFrame(() => {
+                staticSound.pause();
+                staticSound.currentTime = 0;
                 overlay.style.transition = "opacity 0.4s ease";
                 overlay.style.opacity = "0";
                 overlay.style.pointerEvents = "none";
@@ -105,7 +107,6 @@
             staticSound.currentTime = 0;
             playPromise = staticSound.play();
             if (playPromise !== undefined) playPromise.catch(() => {});
-
             setTimeout(() => {
                 showStatic(false);
             }, 1000);
