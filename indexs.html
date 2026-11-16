@@ -35,6 +35,7 @@
             animation: jiggle 0.9s steps(2) infinite;
         }
         
+        /* i think the button styling thing SHOULD LIVE in one js file so we just call it as a function everytime */
         pre a {
                 text-decoration: none;
                 color: #F5FFFA;/* mint cream color lol */
@@ -67,7 +68,7 @@
 <h2>2001office official wiki</h2>
 <hr>
 
-    
+
 <pre>
 <a href="info.html">informations</a>
 <a href="locations.html">locations</a>
@@ -85,36 +86,20 @@
     
 <script src="assets/page-effects.js"></script>
 <script>
-const click = document.getElementById("clicksound");
-const loading = document.getElementById("loading");
+<audio id="hoversound" src="assets/mousehover.ogg" preload="auto"></audio>
+
+<script src="assets/page-effects.js"></script>
+<script>
 const hover = document.getElementById("hoversound");
-hover.volume = 0.03;/*for some reason, and i don't know for which, it says 'Uncaught TypeError: Cannot set properties of null (setting 'volume')' when it is 0.035 */
-document.querySelectorAll("pre a").forEach(link => {
-    link.addEventListener("mouseenter", function() {
-        hover.currentTime = 0;
-        hover.play().catch(() => {});
+if (hover) {
+    hover.volume = 0.035;
+    document.querySelectorAll("pre a").forEach(link => {
+        link.addEventListener("mouseenter", function() {
+            hover.currentTime = 0;
+            hover.play().catch(() => {});
+        });
     });
-});
-
-let navigating = false;
-
-document.addEventListener("click", function(e) {
-    const link = e.target.closest("a");
-
-    if (!link || navigating) return;
-
-    e.preventDefault();
-    navigating = true;
-
-    loading.style.display = "block";
-
-    click.currentTime = 0;
-    click.play().catch(() => {});
-
-    setTimeout(function() {
-        window.location.href = link.href;
-    }, 1000);
-});
+}
 </script>
 </body>
 </html>
