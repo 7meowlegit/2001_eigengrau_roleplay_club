@@ -4,66 +4,11 @@
 <head>
     <meta charset="utf-8">
     <title>2001</title>
-
-    <style>
-        #loading {
-            display: none;
-            margin-top: 15px;
-            font-size: 12px;
-            color: #777;
-        }
-/* yo so i found out how to add comments */
-/* ADD JIGGLE TO LOOK C00L H3H3HAH3AH */
-        body {
-            background-image: url("background.png");/*did not put in any backgrounimag at all eh */
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            /* you can add jiggle to background aswell */
-        }
-        h1 {
-            font-size: 45px;
-            color: black;
-            text-align: left;
-            animation: jiggle 0.6s steps(1) infinite;
-        }
-        h2 {
-            font-size: 30px;
-            color: black;
-            text-align: left;
-            animation: jiggle 0.9s steps(2) infinite;
-        }
-        
-        /* i think the button styling thing SHOULD LIVE in one js file so we just call it as a function everytime */
-        pre a {
-                text-decoration: none;
-                color: #F5FFFA;/* mint cream color lol */
-                text-shadow: #000 2px 2px 1px;
-                padding: 7px;
-                display: inline-block;
-                width: 200px;
-                box-sizing: border-box;
-                outline: outset #590000 1px;
-                background-color: #000000;
-                margin-bottom: 6px;
-        }
-        pre a:hover {
-        color: #f00; 
-        text-shadow: #ff3636 0px 1px 6px;
-        animation: jiggle 0.9s steps(2) infinite;
-        }
-        @keyframes jiggle { 
-        0% { transform: rotate(0.1deg) translate(-0.5px, -0.5px); letter-spacing: -1px; }
-        25% { transform: rotate(0.2deg) translate(0.4px, 0.2px); letter-spacing: -1.1px; }
-        50% { transform: rotate(-0.1deg) translate(0, 0); letter-spacing: -1.3px; }
-        75% { transform: rotate(0.2deg) translate(-1px, -0.5px); letter-spacing: -1.2px; }
-        100% { transform: rotate(0.3deg) translate(-0.1px, -0.5px); letter-spacing: -1.3px; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/indexs.css">
 </head>
-<body style="background-color:white;">
 
+<body>
 <h1>2001wiki</h1>
 <h2>2001office official wiki</h2>
 <hr>
@@ -75,31 +20,18 @@
 <a href="entities.html">entities</a>
 <a href="items.html">items</a>
 
-<a href="credits.html">/..</a>
+<a href="credits.html">credits</a>
 </pre>
 
-<div id="loading">pending</div>
+<div class="loading">pending</div>
+</body>
 
-<audio id="clicksound" src="assets/clicksound.ogg" preload="auto"></audio>
-<audio id="hoversound" src="assets/mousehover.ogg" preload="auto"></audio>
+<audio class="clicksound" src="assets/clicksound.ogg" preload="auto"></audio>
+<audio class="hoversound" src="assets/mousehover.ogg" preload="auto"></audio>
 
     
 <script src="assets/page-effects.js"></script>
-<script>
-<audio id="hoversound" src="assets/mousehover.ogg" preload="auto"></audio>
-
+<audio class="hoversound" src="assets/mousehover.ogg" preload="auto"></audio>
 <script src="assets/page-effects.js"></script>
-<script>
-const hover = document.getElementById("hoversound");
-if (hover) {
-    hover.volume = 0.035;
-    document.querySelectorAll("pre a").forEach(link => {
-        link.addEventListener("mouseenter", function() {
-            hover.currentTime = 0;
-            hover.play().catch(() => {});
-        });
-    });
-}
-</script>
-</body>
+<script src="assets/sound.js"></script>
 </html>
