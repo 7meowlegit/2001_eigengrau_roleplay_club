@@ -1,3 +1,6 @@
 img {
     image-rendering: auto;
 }
+body{
+  font-family: "Arial", Times, serif;
+}
